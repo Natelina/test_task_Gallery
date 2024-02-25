@@ -22,7 +22,7 @@ const Gallery = ({ numberPictures }: Props) => {
   );
 
   const dispatch = useDispatch();
-  const { pictures, isLoading } = useFetchPictures(numberPictures);
+  const { pictures, isLoading } = useFetchPictures();
 
   useEffect(() => {
     dispatch(setPicturesData(pictures));
@@ -103,8 +103,9 @@ const Gallery = ({ numberPictures }: Props) => {
                 />
               </div>
               {Array.isArray(picturesState) &&
+                numberPictures &&
                 picturesState
-                  .slice(currentIndex, currentIndex + 10)
+                  .slice(currentIndex, currentIndex + numberPictures)
                   .map((el: Pictures) => {
                     return (
                       <div
