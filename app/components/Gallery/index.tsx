@@ -12,7 +12,6 @@ interface Props {
 }
 
 const Gallery = ({ numberPictures }: Props) => {
-  const [clickNext, setClickNext] = useState(false);
   const [picture, setPicture] = useState({});
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,7 +26,7 @@ const Gallery = ({ numberPictures }: Props) => {
 
   useEffect(() => {
     dispatch(setPicturesData(pictures));
-  }, [pictures, clickNext]);
+  }, [pictures]);
 
   const hendlerNextPicture = () => {
     fetch(
@@ -63,6 +62,12 @@ const Gallery = ({ numberPictures }: Props) => {
         <p className="text-lg font-semibold">Loading...</p>
       ) : (
         <div className="flex flex-col gap-8 justify-center items-center  h-full">
+          <div className="flex justify-center items-center ">
+            <h1 className="text-3xl italic font-semibold tracking-wide">
+              Cat Gallery
+            </h1>
+            <img src="./png/cat.png" alt="" />
+          </div>
           <div className="flex justify-center items-center gap-4">
             {Array.isArray(picturesState) &&
               picturesState
