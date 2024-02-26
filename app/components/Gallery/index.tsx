@@ -74,6 +74,7 @@ const Gallery = ({ numberPictures }: Props) => {
                 .slice(selectCurrentIndex, selectCurrentIndex + 3)
                 .map((el: Pictures, index: number) => {
                   const isMiddle = index === 1;
+                  const isLast = index === 2;
                   return (
                     <div
                       key={el.id}
@@ -81,6 +82,7 @@ const Gallery = ({ numberPictures }: Props) => {
                       onClick={() => {
                         selectedPicture(el);
                         isMiddle && setIsOpenModal(true);
+                        isLast && hendlerNextPicture();
                       }}
                     >
                       <img
